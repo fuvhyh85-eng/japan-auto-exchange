@@ -15,9 +15,10 @@ export const pages = {
   auctions: "/auctions",
   wholesale: "/wholesale",
   shipping: "/shipping",
+  buyer: "/buyer-desk",
 } as const;
 
-type PageKey = keyof typeof pages;
+export type PageKey = keyof typeof pages;
 type LeadForm = "quote" | "bulk" | "auction" | "shipping" | "contact";
 
 export function BrandMark() {
@@ -36,7 +37,7 @@ export function SiteHeader({ active = "home" }: { active?: PageKey }) {
     ["auctions", "Auctions", pages.auctions],
     ["wholesale", "Wholesale", pages.wholesale],
     ["shipping", "Shipping", pages.shipping],
-    ["buyer", "Buyer desk", "/buyer-desk"],
+    ["buyer", "Buyer desk", pages.buyer],
   ] as const;
 
   return (

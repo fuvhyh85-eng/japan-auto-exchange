@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project Architecture
+
+- Keep storefront pages as file-based TanStack routes and share marketplace presentation and demo vehicle data through `src/components/site/` and `src/lib/marketplace-data.ts` so pages stay consistent without implying persistence.

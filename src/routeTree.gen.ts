@@ -9,27 +9,181 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuctionsRouteImport } from './routes/auctions'
+import { Route as BuyerDeskRouteImport } from './routes/buyer-desk'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as WholesaleRouteImport } from './routes/wholesale'
+import { Route as VehiclesVehicleIdRouteImport } from './routes/vehicles.$vehicleId'
 
-export interface FileRoutesByFullPath {}
-export interface FileRoutesByTo {}
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuctionsRoute = AuctionsRouteImport.update({
+  id: '/auctions',
+  path: '/auctions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyerDeskRoute = BuyerDeskRouteImport.update({
+  id: '/buyer-desk',
+  path: '/buyer-desk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WholesaleRoute = WholesaleRouteImport.update({
+  id: '/wholesale',
+  path: '/wholesale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VehiclesVehicleIdRoute = VehiclesVehicleIdRouteImport.update({
+  id: '/vehicles/$vehicleId',
+  path: '/vehicles/$vehicleId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/auctions': typeof AuctionsRoute
+  '/buyer-desk': typeof BuyerDeskRoute
+  '/inventory': typeof InventoryRoute
+  '/shipping': typeof ShippingRoute
+  '/wholesale': typeof WholesaleRoute
+  '/vehicles/$vehicleId': typeof VehiclesVehicleIdRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/auctions': typeof AuctionsRoute
+  '/buyer-desk': typeof BuyerDeskRoute
+  '/inventory': typeof InventoryRoute
+  '/shipping': typeof ShippingRoute
+  '/wholesale': typeof WholesaleRoute
+  '/vehicles/$vehicleId': typeof VehiclesVehicleIdRoute
+}
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/auctions': typeof AuctionsRoute
+  '/buyer-desk': typeof BuyerDeskRoute
+  '/inventory': typeof InventoryRoute
+  '/shipping': typeof ShippingRoute
+  '/wholesale': typeof WholesaleRoute
+  '/vehicles/$vehicleId': typeof VehiclesVehicleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
+  fullPaths:
+    | '/'
+    | '/auctions'
+    | '/buyer-desk'
+    | '/inventory'
+    | '/shipping'
+    | '/wholesale'
+    | '/vehicles/$vehicleId'
   fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: '__root__'
+  to:
+    | '/'
+    | '/auctions'
+    | '/buyer-desk'
+    | '/inventory'
+    | '/shipping'
+    | '/wholesale'
+    | '/vehicles/$vehicleId'
+  id:
+    | '__root__'
+    | '/'
+    | '/auctions'
+    | '/buyer-desk'
+    | '/inventory'
+    | '/shipping'
+    | '/wholesale'
+    | '/vehicles/$vehicleId'
   fileRoutesById: FileRoutesById
 }
-export interface RootRouteChildren {}
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  AuctionsRoute: typeof AuctionsRoute
+  BuyerDeskRoute: typeof BuyerDeskRoute
+  InventoryRoute: typeof InventoryRoute
+  ShippingRoute: typeof ShippingRoute
+  WholesaleRoute: typeof WholesaleRoute
+  VehiclesVehicleIdRoute: typeof VehiclesVehicleIdRoute
 }
 
-const rootRouteChildren: RootRouteChildren = {}
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auctions': {
+      id: '/auctions'
+      path: '/auctions'
+      fullPath: '/auctions'
+      preLoaderRoute: typeof AuctionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyer-desk': {
+      id: '/buyer-desk'
+      path: '/buyer-desk'
+      fullPath: '/buyer-desk'
+      preLoaderRoute: typeof BuyerDeskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wholesale': {
+      id: '/wholesale'
+      path: '/wholesale'
+      fullPath: '/wholesale'
+      preLoaderRoute: typeof WholesaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vehicles/$vehicleId': {
+      id: '/vehicles/$vehicleId'
+      path: '/vehicles/$vehicleId'
+      fullPath: '/vehicles/$vehicleId'
+      preLoaderRoute: typeof VehiclesVehicleIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AuctionsRoute: AuctionsRoute,
+  BuyerDeskRoute: BuyerDeskRoute,
+  InventoryRoute: InventoryRoute,
+  ShippingRoute: ShippingRoute,
+  WholesaleRoute: WholesaleRoute,
+  VehiclesVehicleIdRoute: VehiclesVehicleIdRoute,
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
